@@ -51,6 +51,7 @@ for ii=1:N
         end
 
     catch exception1
+        display(getReport(exception1))
         time(ii)=NaN;
         relerr(ii)=NaN;
         cd(rootpath);
