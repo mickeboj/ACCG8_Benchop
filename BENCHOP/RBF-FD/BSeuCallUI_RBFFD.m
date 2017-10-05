@@ -48,18 +48,18 @@ for ii=2:m
     indc=1:n;
     xc=x(ii);
     xi=x(indc);
-    
+
     wc1=rbfga_weights_BS('xx',ep,xi,xc,r,sig);
     wc1=wc1*0.5*sig^2*x(ii)^2;
-    
+
     wc2=rbfga_weights_BS('x',ep,xi,xc,r,sig);
     wc2=wc2*r*x(ii);
-    
+
     wc3=rbfga_weights_BS('0',ep,xi,xc,r,sig);
     wc3=-wc3*r;
-    
+
     wc=wc1+wc2+wc3;
-    
+
     W(ii,indc)=wc;
 end
 
@@ -67,18 +67,18 @@ for ii=m+1:N-m
     indc=ii-m:ii+m;
     xc=x(ii);
     xi=x(indc);
-    
+
     wc1=rbfga_weights_BS('xx',ep,xi,xc,r,sig);
     wc1=wc1*0.5*sig^2*x(ii)^2;
-    
+
     wc2=rbfga_weights_BS('x',ep,xi,xc,r,sig);
     wc2=wc2*r*x(ii);
-    
+
     wc3=rbfga_weights_BS('0',ep,xi,xc,r,sig);
     wc3=-wc3*r;
-    
+
     wc=wc1+wc2+wc3;
-    
+
     W(ii,indc)=wc;
 end
 
@@ -86,18 +86,18 @@ for ii=N-m+1:N-1
     indc=N-n+1:N;
     xc=x(ii);
     xi=x(indc);
-    
+
     wc1=rbfga_weights_BS('xx',ep,xi,xc,r,sig);
     wc1=wc1*0.5*sig^2*x(ii)^2;
-    
+
     wc2=rbfga_weights_BS('x',ep,xi,xc,r,sig);
     wc2=wc2*r*x(ii);
-    
+
     wc3=rbfga_weights_BS('0',ep,xi,xc,r,sig);
     wc3=-wc3*r;
-    
+
     wc=wc1+wc2+wc3;
-    
+
     W(ii,indc)=wc;
 end
 
@@ -123,16 +123,16 @@ A=I-(2/3)*dt*W;
 for ii=3:M
     u2=u1;
     u1=u;
-    
+
     b=((4/3)*u1-(1/3)*u2);
     b(end)=x(end)-Ks*exp(-r*(ii-1)*dt);
-    
+
     u=U\(L\b);
     u=max(u,0);
 end
 
 x=K*x;
 u=K*u;
-
+display("hej")
 U=interp1(x,u,S,'spline');
 end
