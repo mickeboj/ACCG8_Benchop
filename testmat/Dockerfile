@@ -1,3 +1,3 @@
 from lordnelsson/testimg
 
-ADD /BENCHOP proj/bench/
+ADD /BENCHOP bench/
