@@ -133,6 +133,6 @@ end
 
 x=K*x;
 u=K*u;
-display("hej")
+
 U=interp1(x,u,S,'spline');
 end
