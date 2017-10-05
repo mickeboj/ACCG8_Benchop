@@ -1,0 +1,4 @@
+celery
+numpy
+scipy
+oct2py
