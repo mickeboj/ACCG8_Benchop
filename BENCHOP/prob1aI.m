@@ -1,4 +1,4 @@
-function [rBSeuCallUI,tBSeuCallUI] = prob1I()
+function [rBSeuCallUI,tBSeuCallUI] = prob1aI()
 format long
 
 % addpath(genpath('./')); %adds all the functions from subfolders to the path
