@@ -2,6 +2,7 @@ from lordnelsson/testimg
 
 ADD /BENCHOP bench/
 ADD /cproj cproj/
+ADD celerytest.py ./
 
 RUN apt-get install rabbitmq-server
 
