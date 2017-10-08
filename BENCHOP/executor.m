@@ -51,7 +51,7 @@ for ii=1:N
         end
 
     catch exception1
-        display(exception1message)
+        display(exception1.message)
         time(ii)=NaN;
         relerr(ii)=NaN;
         cd(rootpath);
