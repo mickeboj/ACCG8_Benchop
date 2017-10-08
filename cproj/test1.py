@@ -8,14 +8,14 @@ import os
 
 def test1():
     print "Testing OS.dir and feval"
-    os.chdir("/bench")
+
     x,y = oc.feval("prob1aI",nout=2)
     print "1st", x
     print "2st", y
 
 def test2():
     print "Testing OS.dir and eval"
-    os.chdir("/bench")
+    
     x,y = oc.eval("prob1aI()",nout=2)
     print "1st", x
     print "2st", y
@@ -23,5 +23,6 @@ def test2():
 
 
 if __name__ == "__main__":
+    oc.chdir("bench/")
     test1()
     test2()
