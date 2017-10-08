@@ -4,7 +4,7 @@ ADD /BENCHOP bench/
 ADD /cproj cproj/
 ADD celerytest.py ./
 
-RUN apt-get install rabbitmq-server
+RUN apt-get install -y rabbitmq-server
 
 RUN rabbitmqctl add_user user1 pwd
 RUN rabbitmqctl add_vhost vhost1
