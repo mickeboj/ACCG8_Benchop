@@ -2,4 +2,4 @@ from oct2py import octave as oc
 import os
 if __name__ =="__main__":
     os.chdir('bench/')
-    [time,relerr] = oc.feval("prob1I",noutput = 2)
+    [time,relerr] = oc.feval("prob1I",nout = 2)
