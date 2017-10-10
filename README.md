@@ -24,7 +24,7 @@ In the folder "worker" there is an docker file called dockerfile which is used t
 $ docker build -t <name> -f <path/to/dockerfile> .
 
 ### Starting worker
-From /proj directtory
+From /proj directory
 $ celery -A cproj worker -l info
 
 

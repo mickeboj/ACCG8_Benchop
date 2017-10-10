@@ -8,9 +8,11 @@ Methods=['MC','MC-S','QMC-S','MLMC','MLMC-A',
 def makeTable(input):
     temp_t = [None]*6
     temp_err = [None]*6
+    j = 0
     for i in input:
-        temp_t = np.array(i[0])
-        temp_err = np.array(i[1])
+        temp_t[j] = oc.transpose(i[0])
+        temp_err[j] = oc.transpose(i[1])
+        j = j + 1
     if not oc.pwd() == "/proj/bench":
         oc.chdir("bench/")
     table = oc.feval("setupTable",temp_t,temp_err, nout = 1)
