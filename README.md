@@ -27,5 +27,11 @@ $ docker build -t <name> -f <path/to/dockerfile> .
 From /proj directtory
 $ celery -A cproj worker -l info
 
+
+### Cleaning scripts docker
+sudo docker rm $(sudo docker ps -q -f 'status=exited')
+sudo docker rmi $(sudo docker images -q -f "dangling=true")
+sudo docker volume rm $(sudo docker volume ls -qf dangling=true)
+
 ### Starting rabbitmq container
 $ sudo docker run --rm --name broker -d  -p 5672:5672 -v ${PWD}/broker:/hooks authentise/rabbitmq
