@@ -1,4 +1,4 @@
-FROM lordnelsson/acc_base
+FROM lordnelsson/accbop_base
 ADD /BENCHOP bench/
 ADD /cproj cproj/
 ADD /flower/config.py cproj/
