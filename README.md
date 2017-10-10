@@ -26,3 +26,6 @@ $ docker build -t <name> -f <path/to/dockerfile> .
 ### Starting worker
 From /proj directtory
 $ celery -A cproj worker -l info
+
+### Starting rabbitmq container
+$ sudo docker run --rm --name broker -d  -p 5672:5672 -v ${PWD}/broker:/hooks authentise/rabbitmq
