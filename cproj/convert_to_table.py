@@ -1,6 +1,8 @@
 import numpy as np
 from oct2py import octave as oc
-
+# The form we will have to send to this function:
+# a = x_reform,y_reform
+# then input = [a1,a2,a3,a4,a5,a6]
 Methods=['MC','MC-S','QMC-S','MLMC','MLMC-A',
     'FFT','FGL','COS',
     'FD','FD-NU','FD-AD',
