@@ -4,7 +4,7 @@ WORKDIR /proj
 
 RUN apt-get update && apt-get install -y python python-pip octave
 
-ADD worker/requirements.txt /proj
+ADD baseimg/requirements.txt /proj
 
 RUN pip install --upgrade pip
 
