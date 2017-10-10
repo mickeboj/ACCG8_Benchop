@@ -1,1 +1,1 @@
-broker = "amqp://user1:pwd12@localhost:5672/vhost1"
+broker = "amqp://user1:pwd12@192.168.1.21:5672/vhost1"
