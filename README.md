@@ -26,3 +26,8 @@ $ docker build -t <name> -f <path/to/dockerfile> .
 ### Starting worker
 From /proj directtory
 $ celery -A cproj worker -l info
+
+### Cleaning scripts docker
+sudo docker rm $(sudo docker ps -q -f 'status=exited')
+sudo docker rmi $(sudo docker images -q -f "dangling=true")
+sudo docker volume rm $(sudo docker volume ls -qf dangling=true)
