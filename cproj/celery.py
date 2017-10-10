@@ -1,9 +1,10 @@
 from __future__ import absolute_import, unicode_literals
 from celery import Celery
+from config import broker
 
 app = Celery('cproj',
-             broker='amqp://user1:pwd@localhost:5672/vhost1',
-             backend='amqp://user1:pwd@localhost:5672/vhost1',
+             broker=broker,
+             backend=broker,
              include=['cproj.tasks'])
 
 

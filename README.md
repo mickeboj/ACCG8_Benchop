@@ -22,3 +22,7 @@ sudo apt-get install -y docker-ce
 In the folder "worker" there is an docker file called dockerfile which is used to contextualize the docker container
 ### Creating Docker img
 $ docker build -t <name> -f <path/to/dockerfile> .
+
+### Starting worker
+From /proj directtory
+$ celery -A cproj worker -l info
