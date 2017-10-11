@@ -33,5 +33,19 @@ sudo docker rm $(sudo docker ps -q -f 'status=exited')
 sudo docker rmi $(sudo docker images -q -f "dangling=true")
 sudo docker volume rm $(sudo docker volume ls -qf dangling=true)
 
+## Running things
 ### Starting rabbitmq container
 $ sudo docker run --rm --name broker -d  -p 5672:5672 -v ${PWD}/broker:/hooks authentise/rabbitmq
+
+### If no images locally build
+
+#### Flower
+sudo docker build -t <name_flower_img> -f flower/Dockerfile .
+#### celery worker
+sudo docker build -t <name_worker_img> -f worker/Dockerfile .
+#### NOTE
+Both worker/config.py and flower.config.py must contain appropiate broker address
+
+### Run the containers
+sudo docker run -d --rm --name <some_name> -p 5555:5555 <name_flower_img>
+sudo docker run -d --rm --name <some_other_name> <name_worker_img>
