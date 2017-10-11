@@ -8,6 +8,6 @@ def solveproblem(pn):
     if not oc.pwd() == "/proj/bench":
         oc.chdir("bench/")
     x,y = oc.feval(pn,nout=2)
-    x_reform = [e for e in x[0]]
-    y_reform = [e for e in y[0]]
+    x_reform = x.tolist()
+    y_reform = y.tolist()
     return x_reform,y_reform
