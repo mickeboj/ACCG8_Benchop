@@ -1,4 +1,4 @@
-function [rBSamPutUI,tBSamPutlUI] = prob1bI()
+function [rBSamPutUI,tBSamPutUI] = prob1bI()
 format long
 
 % addpath(genpath('./')); %adds all the functions from subfolders to the path
