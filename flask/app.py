@@ -31,8 +31,8 @@ def clean_res(res):
     time_res = []
     err_res = []
     for i in range(len(res[0])):
-        time_res.append(res[0][i][0])
-        err_res.append(res[1][i][0])
+        time_res.append(res[1][i][0])
+        err_res.append(res[0][i][0])
     return time_res, err_res
 
 if __name__ == '__main__':
