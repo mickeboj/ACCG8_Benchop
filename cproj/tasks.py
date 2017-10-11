@@ -7,7 +7,7 @@ def solveproblem(pn):
     oc = Oct2Py()
     if not oc.pwd() == "/proj/bench":
         oc.chdir("bench/")
-    x,y = oc.feval(pn,nout=2)
-    x_reform = x.tolist()
-    y_reform = y.tolist()
-    return x_reform,y_reform
+    rel_err,time = oc.feval(pn,nout=2)
+    rel_err_reform = rel_err.tolist()
+    time_reform = time.tolist()
+    return rel_err_reform,time_reform
