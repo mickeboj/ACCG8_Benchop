@@ -48,4 +48,5 @@ Both worker/config.py and flower.config.py must contain appropiate broker addres
 
 ### Run the containers
 sudo docker run -d --rm --name <some_name> -p 5555:5555 <name_flower_img>
+
 sudo docker run -d --rm --name <some_other_name> <name_worker_img>

@@ -4,9 +4,9 @@ from celery import group
 
 app = Flask(__name__)
 
-#PROBLEMS = ["prob1aI", "prob1bI", "prob1cI", "prob1aII","prob1bII", "prob1cII"]
+PROBLEMS = ["prob1aI", "prob1bI", "prob1cI", "prob1aII","prob1bII", "prob1cII"]
 
-PROBLEMS = ["prob1aI", "prob1cI"]
+#PROBLEMS = ["prob1aI", "prob1cI"]
 
 METHODS = ['MC','MC-S','QMC-S','MLMC','MLMC-A',
     'FFT','FGL','COS',
