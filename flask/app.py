@@ -36,6 +36,19 @@ def solve_problem(problem_name):
     return jsonify(ret)
 
 
+def make_rank_dic(m,dic,methods):
+    ret_l = [float("inf")]
+    p = -1
+    while len(ret_l) < len(dic):
+        min_v = float("inf")
+        for i in range(len(dic)):
+            if dic[methods[i]][m] < min_v and dic[methods[i]][m] > min(ret_l):
+                p = i
+        ret_l.append({methods[p] : methods[p][m]})
+    ret_l.pop(0)
+    return ret_l
+
+
 
 def make_ret_dic(time,err,methods):
     dic={}
