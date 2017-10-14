@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify,request
 from cproj.tasks import solveproblem
 from celery import group
 
@@ -21,11 +21,26 @@ def solve_all_problems():
     ret_dic ={}
     for i in range(len(PROBLEMS)):
         time , err = clean_res(results[i])
-        dic ={}
-        for j in range(len(METHODS)):
-            dic[METHODS[j]] = {"time" : time[j] , "err" : err[j]}
-        ret_dic[PROBLEMS[i]] = dic
+        ret_dic[PROBLEMS[i]] = make_ret_dic(time,err,METHODS)
     return jsonify(ret_dic)
+
+
+#TODO Add post data to solveproblem
+
+@app.route('/benchop/api/prob/<problem_name>', methods=['POST'])
+def solve_problem(problem_name):
+    result = solveproblem.delay(problem_name).get()
+    time, err = clean_res(result)
+    return jsonify(make_ret_dic(time,err,METHODS))
+
+
+
+def make_ret_dic(time,err,methods):
+    dic={}
+    for j in range(len(methods)):
+        dic[methods[j]] = {"time" : time[j] , "err" : err[j]}
+    return dic
+
 
 def clean_res(res):
     time_res = []
