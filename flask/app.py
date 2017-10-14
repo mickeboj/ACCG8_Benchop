@@ -4,7 +4,7 @@ from celery import group
 
 app = Flask(__name__)
 
-PROBLEMS = ["prob1aI", "prob1bI", "prob1cI", "prob1aII","prob1bII", "prob1cII"]
+PROBLEMS = ["prob1aI", "prob1bI", "prob1cI","prob1bII"]
 
 #PROBLEMS = ["prob1aI", "prob1cI"]
 
