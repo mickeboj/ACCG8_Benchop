@@ -1,4 +1,4 @@
-from flask import Flask, jsonify,request
+from flask import Flask, jsonify,request, abort
 from cproj.tasks import solveproblem
 from celery import group
 
@@ -13,7 +13,7 @@ METHODS = ['MC','MC-S','QMC-S','MLMC','MLMC-A',
     'FD','FD-NU','FD-AD',
     'RBF','RBF-FD','RBF-PUM','RBF-LSML','RBF-AD','RBF-MLT']
 
-
+PARAM_NAMES = ['S','K','T','r','sig']
 
 @app.route('/benchop/api/allprobs', methods=['GET'])
 def solve_all_problems():
@@ -25,13 +25,15 @@ def solve_all_problems():
     return jsonify(ret_dic)
 
 
-#TODO Add post data to solveproblem
-
 @app.route('/benchop/api/prob/<problem_name>', methods=['POST'])
 def solve_problem(problem_name):
-    result = solveproblem.delay(problem_name).get()
+    if not request.json or not all(par in request.json for par in PARAM_NAMES):
+        abort(400)
+    result = solveproblem.delay(problem_name,request.json).get()
     time, err = clean_res(result)
-    return jsonify(make_ret_dic(time,err,METHODS))
+    ret = make_ret_dic(time,err,METHODS)
+    ret['par'] = request.json
+    return jsonify(ret)
 
 
 
