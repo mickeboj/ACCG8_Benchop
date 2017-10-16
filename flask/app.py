@@ -72,7 +72,7 @@ def make_rank_dic(m,dic,methods):
             if dic[methods[i]][m] == "nan":
                 continue
             if dic[methods[i]][m] < min_v and dic[methods[i]][m] > min(ret_l):
-                if p = -1:
+                if p == -1:
                     ret_l = []
                 ex_flag = False
                 p = i
