@@ -73,10 +73,12 @@ def make_rank_dic(m,dic,methods):
                 continue
             if dic[methods[i]][m] < min_v and dic[methods[i]][m] > min(ret_l):
                 ex_flag = False
+                print "here1"
                 p = i
         if ex_flag:
             break
         ret_l.append({methods[p] : dic[methods[p]][m]})
+        print ret_l
     ret_l.pop(0)
     return ret_l
 
