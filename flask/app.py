@@ -63,22 +63,20 @@ def solve_problem_rank(problem_name):
 
 
 def make_rank_dic(m,dic,methods):
-    ret_l = [float("inf")]
+    ret_l = [0.0]
     p = -1
     while True:
         ex_flag = True
-        min_v = 0.0
+        min_v = float("inf")
         for i in range(len(dic)):
             if dic[methods[i]][m] == "nan":
                 continue
             if dic[methods[i]][m] < min_v and dic[methods[i]][m] > min(ret_l):
                 ex_flag = False
-                print "here1"
                 p = i
         if ex_flag:
             break
         ret_l.append({methods[p] : dic[methods[p]][m]})
-        #print ret_l
     ret_l.pop(0)
     return ret_l
 
