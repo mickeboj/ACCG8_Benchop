@@ -26,7 +26,7 @@ def solve_all_problems():
 
 
 @app.route('/benchop/api/rank/allprobs', methods=['GET'])
-def solve_all_problems():
+def solve_all_problems_rank():
     results = group(solveproblem.s(PROBLEMS[i]) for i in xrange(len(PROBLEMS)))().get()
     ret_dic ={}
     for i in range(len(PROBLEMS)):
@@ -48,7 +48,7 @@ def solve_problem(problem_name):
     return jsonify(ret)
 
 @app.route('/benchop/api/prob/rank/<problem_name>', methods=['POST'])
-def solve_problem(problem_name):
+def solve_problem_rank(problem_name):
     if not request.json or not all(par in request.json for par in PARAM_NAMES):
         abort(400)
     result = solveproblem_par.delay(problem_name,request.json).get()
