@@ -1,4 +1,4 @@
-function [rBSamPutUII,tBSamPutUII] = prob1bIIpar(S,K,T,r,sig)
+function [rBSamPutUII,tBSamPutUII] = prob1bIIpar(S,K,T,r,sig,U)
 format long
 
 % addpath(genpath('./')); %adds all the functions from subfolders to the path
@@ -16,7 +16,7 @@ Methods={'MC','MC-S','QMC-S','MLMC','MLMC-A',...
 display('Problem 1 b) II');
 rootpath=pwd;
 %S=[97,98,99]; K=100; T=0.25; r=0.1; sig=0.01;
-U=[3.000000000000682 2.000000000010786   1.000000000010715];
+%U=[3.000000000000682 2.000000000010786   1.000000000010715];
 
 filepathsBSamPutUII=getfilenames('./','BSamPutUII_*.m');
 par={S,K,T,r,sig};
