@@ -13,16 +13,16 @@ Methods={'MC','MC-S','QMC-S','MLMC','MLMC-A',...
 
 %% Problem 1 a) I
 
-display('Problem 1 a) I');
 rootpath=pwd;
 display(S)
 display(K)
 display(T)
 display(r)
 display(sig)
+display('Problem 1 a) I');
 
 
-%S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
+S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
 display(S)
 display(K)
 display(T)
