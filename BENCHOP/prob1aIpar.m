@@ -16,7 +16,7 @@ Methods={'MC','MC-S','QMC-S','MLMC','MLMC-A',...
 display('Problem 1 a) I');
 rootpath=pwd;
 %S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
-
+T=1.0
 display(S)
 display(K)
 display(T)
