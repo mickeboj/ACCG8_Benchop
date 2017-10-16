@@ -17,26 +17,26 @@
 function xc = ClusterPts(x_min,x_max,N,K,ell,mode)
 % Mode can be cheb or sinh
 % Assuming that we can have multiple cluster points, and then calling for
-% one at a time. Don't really know the effects though.
-% If we do Chebyshev, we can let the previouspoint sit in zero, which
-% will help. Can we do several periods of Chebyshev?
+% one at a time. do1n't really know the effects though.
+% If we do1 Chebyshev, we can let the previouspoint sit in zero, which
+% will help. Can we do1 several periods of Chebyshev?
 % Om vi delar in intervallet i f�rst proportionerligt antal punkter och
 % sedan fixar varje bit med Cheb eller LeftCheb eller RightCheb.
 %
 
   i1 = [x_min; K(:)];
   iN = [K(:); x_max];
-  do = ones([length(i1),2]);
-  do(1,1) = 0; do(end,2) = 0;
+  do1 = ones([length(i1),2]);
+  do1(1,1) = 0; do1(end,2) = 0;
   if (K(1)==x_min)
     i1 = i1(2:end);
     iN = iN(2:end);
-    do = do(2:end,:);
+    do1 = do1(2:end,:);
   end
   if (K(end)==x_max)
     i1 = i1(1:end-1);
     iN = iN(1:end-1);
-    do = do(1:end-1,:);
+    do1 = do1(1:end-1,:);
   end
   nl = length(i1);
 
@@ -56,11 +56,11 @@ function xc = ClusterPts(x_min,x_max,N,K,ell,mode)
 
 
     for k=1:nl
-      if sum(do(k,:))==2
+      if sum(do1(k,:))==2
         x = ChebPts([i1(k) iN(k)],n(k),ell);
-      elseif do(k,1)==1
+      elseif do1(k,1)==1
         x = ChebPtsLeft([i1(k) iN(k)],n(k),ell);
-      elseif do(k,2)==1
+      elseif do1(k,2)==1
         x = ChebPtsLeft(-[iN(k) i1(k)],n(k),ell);
         x = -x(end:-1:1);
       end
@@ -69,7 +69,7 @@ function xc = ClusterPts(x_min,x_max,N,K,ell,mode)
     xc = [xc;x(end)];
   else % mode=sinh
     % Now we want to have the cluster points in the middle or one end
-    % instead, because I do not know how to make two with this approach.
+    % instead, because I do1 not know how to make two with this approach.
     % x---y---x---y---x---y---x
     midpts = 0.5*(i1+iN);
     i1 = [x_min; midpts(:)];
