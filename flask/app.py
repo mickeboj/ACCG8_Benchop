@@ -13,7 +13,7 @@ METHODS = ['MC','MC-S','QMC-S','MLMC','MLMC-A',
     'FD','FD-NU','FD-AD',
     'RBF','RBF-FD','RBF-PUM','RBF-LSML','RBF-AD','RBF-MLT']
 
-PARAM_NAMES = ['S','K','T','r','sig']
+PARAM_NAMES = ["U"]#['S','K','T','r','sig']
 
 @app.route('/benchop/api/allprobs', methods=['GET'])
 def solve_all_problems():
