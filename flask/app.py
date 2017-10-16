@@ -67,7 +67,7 @@ def make_rank_dic(m,dic,methods):
     p = -1
     while True:
         ex_flag = True
-        min_v = float("inf")
+        min_v = 0.0
         for i in range(len(dic)):
             if dic[methods[i]][m] == "nan":
                 continue
@@ -78,7 +78,7 @@ def make_rank_dic(m,dic,methods):
         if ex_flag:
             break
         ret_l.append({methods[p] : dic[methods[p]][m]})
-        print ret_l
+        #print ret_l
     ret_l.pop(0)
     return ret_l
 
