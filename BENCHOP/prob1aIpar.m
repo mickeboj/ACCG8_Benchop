@@ -1,4 +1,4 @@
-function [rBSeuCallUI,tBSeuCallUI] = prob1aIpar(S,K,T,r,sig)
+function [rBSeuCallUI,tBSeuCallUI] = prob1aIpar(U)
 format long
 
 % addpath(genpath('./')); %adds all the functions from subfolders to the path
@@ -16,9 +16,9 @@ Methods={'MC','MC-S','QMC-S','MLMC','MLMC-A',...
 rootpath=pwd;
 
 
-%S=[90,100,110];K=100;T=1.0;r=0.03;sig=0.15;
+S=[90,100,110];K=100;T=1.0;r=0.03;sig=0.15;
 
-U=[2.758443856146076 7.485087593912603 14.702019669720769];
+%U=[2.758443856146076 7.485087593912603 14.702019669720769];
 
 filepathsBSeuCallUI=getfilenames('./','BSeuCallUI_*.m');
 par={S,K,T,r,sig};
