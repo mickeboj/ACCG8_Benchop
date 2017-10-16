@@ -14,25 +14,10 @@ Methods={'MC','MC-S','QMC-S','MLMC','MLMC-A',...
 %% Problem 1 a) I
 
 rootpath=pwd;
-display(class(S))
-display(class(K))
-display(class(T))
-display(class(r))
-display(class(sig))
-display('Problem 1 a) I');
 
 
-S=[90,100,110];
-K=100;
-T=1.0;
-r=0.03;
-sig=0.15;
+%S=[90,100,110];K=100;T=1.0;r=0.03;sig=0.15;
 
-display(class(S))
-display(class(K))
-display(class(T))
-display(class(r))
-display(class(sig))
 U=[2.758443856146076 7.485087593912603 14.702019669720769];
 
 filepathsBSeuCallUI=getfilenames('./','BSeuCallUI_*.m');
