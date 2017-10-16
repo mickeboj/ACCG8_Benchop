@@ -1,4 +1,4 @@
-function [rBSupoutCallI,tBSupoutCallI] = prob1cI(S,K,T,r,sig)
+function [rBSupoutCallI,tBSupoutCallI] = prob1cIpar(S,K,T,r,sig)
 format long
 
 % addpath(genpath('./')); %adds all the functions from subfolders to the path

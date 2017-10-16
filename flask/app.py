@@ -41,6 +41,8 @@ def solve_all_problems_rank():
 def solve_problem(problem_name):
     if not request.json or not all(par in request.json for par in PARAM_NAMES):
         abort(400)
+    d =  request.json
+
     result = solveproblem_par.delay(problem_name,request.json).get()
     time, err = clean_res(result)
     ret = make_ret_dic(time,err,METHODS)
