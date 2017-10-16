@@ -13,7 +13,7 @@ METHODS = ['MC','MC-S','QMC-S','MLMC','MLMC-A',
     'FD','FD-NU','FD-AD',
     'RBF','RBF-FD','RBF-PUM','RBF-LSML','RBF-AD','RBF-MLT']
 
-PARAM_NAMES = ['S','K','T','r','sig']
+PARAM_NAMES =['S','K','T','r','sig','U']
 
 @app.route('/benchop/api/allprobs', methods=['GET'])
 def solve_all_problems():
@@ -41,6 +41,8 @@ def solve_all_problems_rank():
 def solve_problem(problem_name):
     if not request.json or not all(par in request.json for par in PARAM_NAMES):
         abort(400)
+    d =  request.json
+
     result = solveproblem_par.delay(problem_name,request.json).get()
     time, err = clean_res(result)
     ret = make_ret_dic(time,err,METHODS)
@@ -53,7 +55,7 @@ def solve_problem_rank(problem_name):
         abort(400)
     result = solveproblem_par.delay(problem_name,request.json).get()
     time, err = clean_res(result)
-    temp = make_ret_dic(time,err,METHODS)
+    t_dic = make_ret_dic(time,err,METHODS)
     ret = {"time": make_rank_dic("time",t_dic,METHODS),
                             "err": make_rank_dic("err",t_dic,METHODS) }
     ret['par'] = request.json
@@ -61,15 +63,25 @@ def solve_problem_rank(problem_name):
 
 
 def make_rank_dic(m,dic,methods):
-    ret_l = [float("inf")]
+    ret_l = [{"dummy" : 0.0}]
     p = -1
-    while len(ret_l) < len(dic):
+    first = True
+    while True:
+        ex_flag = True
         min_v = float("inf")
         for i in range(len(dic)):
-            if dic[methods[i]][m] < min_v and dic[methods[i]][m] > min(ret_l):
+            if dic[methods[i]][m] == "nan":
+                continue
+            if dic[methods[i]][m] < min_v and dic[methods[i]][m] > ret_l[-1].values()[0]:
+                min_v = dic[methods[i]][m]
+                ex_flag = False
                 p = i
-        ret_l.append({methods[p] : methods[p][m]})
-    ret_l.pop(0)
+        if ex_flag:
+            break
+        if first:
+            ret_l = []
+            first = False
+        ret_l.append({methods[p] : dic[methods[p]][m]})
     return ret_l
 
 

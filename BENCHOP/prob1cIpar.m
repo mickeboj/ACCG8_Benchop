@@ -1,4 +1,4 @@
-function [rBSupoutCallI,tBSupoutCallI] = prob1cI(S,K,T,r,sig)
+function [rBSupoutCallI,tBSupoutCallI] = prob1cIpar(S,K,T,r,sig,U)
 format long
 
 % addpath(genpath('./')); %adds all the functions from subfolders to the path
@@ -16,7 +16,7 @@ Methods={'MC','MC-S','QMC-S','MLMC','MLMC-A',...
 display('Problem 1 c) I');
 rootpath=pwd;
 % S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15; B=1.25*K;
-U=[1.822512255945242 3.294086516281595 3.221591131246868];
+%U=[1.822512255945242 3.294086516281595 3.221591131246868];
 
 filepathsBSupoutCallI=getfilenames('./','BSupoutCallI_*.m');
 par={S,K,T,r,sig,B};

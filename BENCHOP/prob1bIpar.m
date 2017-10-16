@@ -1,4 +1,4 @@
-function [rBSamPutUI,tBSamPutUI] = prob1bI(S,K,T,r,sig)
+function [rBSamPutUI,tBSamPutUI] = prob1bIpar(S,K,T,r,sig,U)
 format long
 
 % addpath(genpath('./')); %adds all the functions from subfolders to the path
@@ -16,7 +16,7 @@ Methods={'MC','MC-S','QMC-S','MLMC','MLMC-A',...
 display('Problem 1 b) I');
 rootpath=pwd;
 % S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
-U=[10.726486710094511 4.820608184813253 1.828207584020458];
+% U=[10.726486710094511 4.820608184813253 1.828207584020458];
 
 filepathsBSamPutUI=getfilenames('./','BSamPutUI_*.m');
 par={S,K,T,r,sig};
