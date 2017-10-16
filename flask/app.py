@@ -1,5 +1,5 @@
 from flask import Flask, jsonify,request, abort
-from cproj.tasks import solveproblem
+from cproj.tasks import solveproblem, solveproblem_par
 from celery import group
 
 app = Flask(__name__)
@@ -25,13 +25,37 @@ def solve_all_problems():
     return jsonify(ret_dic)
 
 
+@app.route('/benchop/api/rank/allprobs', methods=['GET'])
+def solve_all_problems():
+    results = group(solveproblem.s(PROBLEMS[i]) for i in xrange(len(PROBLEMS)))().get()
+    ret_dic ={}
+    for i in range(len(PROBLEMS)):
+        time , err = clean_res(results[i])
+        t_dic = make_ret_dic(time,err,METHODS)
+        ret_dic[PROBLEMS[i]] = {"time": make_rank_dic("time",t_dic,METHODS),
+                                "err": make_rank_dic("err",t_dic,METHODS) }
+    return jsonify(ret_dic)
+
+
 @app.route('/benchop/api/prob/<problem_name>', methods=['POST'])
 def solve_problem(problem_name):
     if not request.json or not all(par in request.json for par in PARAM_NAMES):
         abort(400)
-    result = solveproblem.delay(problem_name,request.json).get()
+    result = solveproblem_par.delay(problem_name,request.json).get()
     time, err = clean_res(result)
     ret = make_ret_dic(time,err,METHODS)
+    ret['par'] = request.json
+    return jsonify(ret)
+
+@app.route('/benchop/api/prob/rank/<problem_name>', methods=['POST'])
+def solve_problem(problem_name):
+    if not request.json or not all(par in request.json for par in PARAM_NAMES):
+        abort(400)
+    result = solveproblem_par.delay(problem_name,request.json).get()
+    time, err = clean_res(result)
+    temp = make_ret_dic(time,err,METHODS)
+    ret = {"time": make_rank_dic("time",t_dic,METHODS),
+                            "err": make_rank_dic("err",t_dic,METHODS) }
     ret['par'] = request.json
     return jsonify(ret)
 
