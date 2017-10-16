@@ -65,6 +65,7 @@ def solve_problem_rank(problem_name):
 def make_rank_dic(m,dic,methods):
     ret_l = [0.0]
     p = -1
+    first = True
     while True:
         ex_flag = True
         min_v = float("inf")
@@ -72,12 +73,13 @@ def make_rank_dic(m,dic,methods):
             if dic[methods[i]][m] == "nan":
                 continue
             if dic[methods[i]][m] < min_v and dic[methods[i]][m] > min(ret_l):
-                if p == -1:
-                    ret_l = []
                 ex_flag = False
                 p = i
         if ex_flag:
             break
+        if first:
+            ret_l = []
+            first = False
         ret_l.append({methods[p] : dic[methods[p]][m]})
     return ret_l
 
