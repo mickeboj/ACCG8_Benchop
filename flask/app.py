@@ -55,7 +55,7 @@ def solve_problem_rank(problem_name):
         abort(400)
     result = solveproblem_par.delay(problem_name,request.json).get()
     time, err = clean_res(result)
-    temp = make_ret_dic(time,err,METHODS)
+    t_dic = make_ret_dic(time,err,METHODS)
     ret = {"time": make_rank_dic("time",t_dic,METHODS),
                             "err": make_rank_dic("err",t_dic,METHODS) }
     ret['par'] = request.json
