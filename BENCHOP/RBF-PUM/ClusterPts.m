@@ -23,7 +23,9 @@ function xc = ClusterPts(x_min,x_max,N,K,ell,mode)
 % Om vi delar in intervallet i f�rst proportionerligt antal punkter och
 % sedan fixar varje bit med Cheb eller LeftCheb eller RightCheb.
 %
-
+  display(x_min)
+  display(x_max)
+  display(K)
   i1 = [x_min; K(:)];
   iN = [K(:); x_max];
   display(i1)

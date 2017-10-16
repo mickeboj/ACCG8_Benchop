@@ -26,7 +26,7 @@ function xc = ClusterPts(x_min,x_max,N,K,ell,mode)
 
   i1 = [x_min; K(:)];
   iN = [K(:); x_max];
-  do = ones(length([i1),2]);
+  do = ones([length(i1),2]);
   do(1,1) = 0; do(end,2) = 0;
   if (K(1)==x_min)
     i1 = i1(2:end);
