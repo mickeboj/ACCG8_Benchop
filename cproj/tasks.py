@@ -20,7 +20,7 @@ def solveproblem_par(pn,par_dic):
     if not oc.pwd() == "/proj/bench":
         oc.chdir("bench/")
     rel_err,time = oc.feval(pn +"par",np.array(par_dic['S']),par_dic['K'],
-                    par_dic['T'],par_dic['r'],par_dic['sig'],nout=2)
+                    float(par_dic['T']),par_dic['r'],par_dic['sig'],nout=2)
     rel_err_reform = rel_err.tolist()
     time_reform = time.tolist()
     return rel_err_reform,time_reform
