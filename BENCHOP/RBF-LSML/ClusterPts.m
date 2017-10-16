@@ -20,13 +20,13 @@ function xc = ClusterPts(x_min,x_max,N,K,ell,mode)
 % one at a time. Don't really know the effects though.
 % If we do Chebyshev, we can let the previouspoint sit in zero, which
 % will help. Can we do several periods of Chebyshev?
-% Om vi delar in intervallet i först proportionerligt antal punkter och
-% sedan fixar varje bit med Cheb eller LeftCheb eller RightCheb.  
+% Om vi delar in intervallet i fï¿½rst proportionerligt antal punkter och
+% sedan fixar varje bit med Cheb eller LeftCheb eller RightCheb.
 %
 
   i1 = [x_min; K(:)];
   iN = [K(:); x_max];
-  do = ones(length(i1),2);
+  do = ones([length(i1),2]);
   do(1,1) = 0; do(end,2) = 0;
   if (K(1)==x_min)
     i1 = i1(2:end);
@@ -60,7 +60,7 @@ function xc = ClusterPts(x_min,x_max,N,K,ell,mode)
         x = ChebPts([i1(k) iN(k)],n(k),ell);
       elseif do(k,1)==1
         x = ChebPtsLeft([i1(k) iN(k)],n(k),ell);
-      elseif do(k,2)==1  
+      elseif do(k,2)==1
         x = ChebPtsLeft(-[iN(k) i1(k)],n(k),ell);
         x = -x(end:-1:1);
       end
@@ -97,6 +97,3 @@ function xc = ClusterPts(x_min,x_max,N,K,ell,mode)
     end
     xc = [xc;x(end)];
   end
-
-
-  
