@@ -2,6 +2,13 @@
 
 ## Applied Cloud Computing Group 8 Project
 
+###Setting up instance
+Make sure right inputs are for username/password.
+Then run contextualize.py(In testing phase right now).
+
+Otherwise use cloud-cfg.txt as configuration in openstack dashboard when creating an instance.
+
+
 ###Installing Docker (in case of crash)
 Add GPG key:
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -

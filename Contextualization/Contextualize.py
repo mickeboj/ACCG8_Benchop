@@ -17,7 +17,7 @@ image_name = "Ubuntu 16.04 LTS (Xenial Xerus) - latest"
 loader = loading.get_plugin_loader('password')
 
 auth = loader.load_from_options(auth_url='https://hpc2n.cloud.snic.se:5000/v3',
-                                                                username='s9508',password='****',project_name="SNIC 2017/13-45",project_domain_name='snic',project_id='ad5091c4f42e4defb98eb9550f875f4f',user_domain_name='snic')
+                                                                username='USERNAME',password='PASSWORD',project_name="SNIC 2017/13-45",project_domain_name='snic',project_id='ad5091c4f42e4defb98eb9550f875f4f',user_domain_name='snic')
 
 sess = session.Session(auth=auth)
 nova = client.Client('2.1', session=sess)
