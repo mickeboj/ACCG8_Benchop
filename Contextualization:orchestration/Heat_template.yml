@@ -1,6 +1,6 @@
 heat_template_version: 2013-05-23
 
-description: Template to deploy one instances without specific parameters. Not workable at the moment.  
+description: Template to deploy one instances(add specific parameters). Not workable or testable because of the lack of resources with SNIC.  
 
 # Declare parameters 
 parameters:
